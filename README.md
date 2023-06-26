@@ -1,6 +1,7 @@
 # Rest
 
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ivangabriele/rest/test.yml?label=Tests&style=for-the-badge)](https://github.com/ivangabriele/rest/actions?query=branch%3Amain+workflow%3ATest++)
+[![Test Workflow Status](https://img.shields.io/github/actions/workflow/status/ivangabriele/rest/test.yml?label=Tests&style=for-the-badge)](https://github.com/ivangabriele/rest/actions?query=branch%3Amain+workflow%3ATest++)
+[![Code Coverage](https://img.shields.io/codecov/c/github/ivangabriele/rest/main)](https://app.codecov.io/gh/ivangabriele/rest/new)
 
 The equivalent of [Jest](https://jestjs.io) for Rust.
 
