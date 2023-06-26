@@ -1,0 +1,23 @@
+name: Test
+
+on: push
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: v1.70.0
+      - name: Install Tarpaulin
+        run: cargo install cargo-tarpaulin
+      - name: Run tests (with coverage)
+        run: cargo tarpaulin --no-fail-fast --out Xml --skip-clean
+      - name: Upload tests coverage
+        uses: codecov/codecov-action@v3
+        # with:
+        #   token: ${{ secrets.CODECOV_TOKEN }}
