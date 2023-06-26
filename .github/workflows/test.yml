@@ -19,5 +19,5 @@ jobs:
         run: cargo tarpaulin --no-fail-fast --out Xml --skip-clean
       - name: Upload tests coverage
         uses: codecov/codecov-action@v3
-        # with:
-        #   token: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
