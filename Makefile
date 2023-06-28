@@ -4,7 +4,7 @@ doc:
 test:
 	cargo test --no-fail-fast
 test-cover:
-	cargo tarpaulin --frozen --no-fail-fast --out Xml --release --skip-clean
+	cargo tarpaulin --frozen --no-fail-fast --out Xml --release --force-clean
 test-trace:
 	export RUST_BACKTRACE=1 && cargo test --no-fail-fast -- --nocapture
 test-watch:
