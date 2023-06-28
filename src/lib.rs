@@ -1,6 +1,5 @@
-use std::{fmt::Debug, panic::Location};
-
 use num::ToPrimitive;
+use std::{fmt::Debug, panic::Location};
 
 // macro_rules! implement_expectation_shared_methods {
 //     ($trait_fragment:tt$(<$type_fragment:tt>)?) => {
@@ -19,10 +18,23 @@ use num::ToPrimitive;
 //     Expectation::new(left_value)
 // }
 
+/// Wrap the result to be tested, giving you access to expectation matchers.
+///
+/// # Examples
+///
+/// ```
+/// use jrest::expect;
+///
+/// fn sum(a: i32, b: i32) -> i32 {
+///    return a + b;
+/// }
+///
+/// expect!(sum(1, 2)).to_be(3);
+/// ```
 #[macro_export]
 macro_rules! expect {
     ($left_value:expr) => {{
-        rest::Expectation::new($left_value)
+        jrest::Expectation::new($left_value)
     }};
 }
 
@@ -54,6 +66,21 @@ impl<L: Debug> Expectation<L> {
 }
 
 impl<L: Debug + Eq + PartialEq> Expectation<L> {
+    /// Expect _result_ to exactly equal _expectation_.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use jrest::expect;
+    ///
+    /// expect!(2).to_be(2);
+    /// ```
+    ///
+    /// ```should_panic
+    /// use jrest::expect;
+    ///
+    /// expect!(2).to_be(3);
+    /// ```
     pub fn to_be(&self, right_value: L) {
         if !(self.left_value == right_value) {
             self.panic_with_assertion(right_value, "===");
@@ -72,24 +99,97 @@ impl<L: Debug + Eq + PartialEq> Expectation<L> {
 
 // implement_expectation_shared_methods! { ToPrimitive }
 impl<T: ToPrimitive + Debug> Expectation<T> {
+    /// Expect _result_ to be greater than _expectation_.
+    ///
+    /// This works for any type implementing [`ToPrimitive`](https://docs.rs/num/latest/num/trait.ToPrimitive.html).
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use jrest::expect;
+    ///
+    /// expect!(2).to_be_greater_than(1);
+    /// ```
+    ///
+    /// ```should_panic
+    /// use jrest::expect;
+    ///
+    /// expect!(2).to_be_greater_than(2);
+    /// expect!(2).to_be_greater_than(3);
+    /// ```
     pub fn to_be_greater_than(&self, right_value: T) {
         if !(self.left_value.to_f32() > right_value.to_f32()) {
             self.panic_with_assertion(right_value, ">");
         }
     }
 
+    /// Expect _result_ to be greater than or equal to _expectation_.
+    ///
+    /// This works for any type implementing [`ToPrimitive`](https://docs.rs/num/latest/num/trait.ToPrimitive.html).
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use jrest::expect;
+    ///
+    /// expect!(2).to_be_greater_than_or_equal(1);
+    /// expect!(2).to_be_greater_than_or_equal(2);
+    /// ```
+    ///
+    /// ```should_panic
+    /// use jrest::expect;
+    ///
+    /// expect!(2).to_be_greater_than_or_equal(3);
+    /// ```
     pub fn to_be_greater_than_or_equal(&self, right_value: T) {
         if !(self.left_value.to_f32() >= right_value.to_f32()) {
             self.panic_with_assertion(right_value, ">=");
         }
     }
 
+    /// Expect _result_ to be less than _expectation_.
+    ///
+    /// This works for any type implementing [`ToPrimitive`](https://docs.rs/num/latest/num/trait.ToPrimitive.html)
+    /// (likely any kind of number: `f8`, `i16`, `u32`, `usize`, etc).
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use jrest::expect;
+    ///
+    /// expect!(2).to_be_less_than(3);
+    /// ```
+    ///
+    /// ```should_panic
+    /// use jrest::expect;
+    ///
+    /// expect!(2).to_be_less_than(2);
+    /// expect!(2).to_be_less_than(1);
+    /// ```
     pub fn to_be_less_than(&self, right_value: T) {
         if !(self.left_value.to_f32() < right_value.to_f32()) {
             self.panic_with_assertion(right_value, "<");
         }
     }
 
+    /// Expect _result_ to be less than or equal to _expectation_.
+    ///
+    /// This works for any type implementing [`ToPrimitive`](https://docs.rs/num/latest/num/trait.ToPrimitive.html).
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use jrest::expect;
+    ///
+    /// expect!(2).to_be_less_than_or_equal(3);
+    /// expect!(2).to_be_less_than_or_equal(2);
+    /// ```
+    ///
+    /// ```should_panic
+    /// use jrest::expect;
+    ///
+    /// expect!(2).to_be_less_than_or_equal(1);
+    /// ```
     pub fn to_be_less_than_or_equal(&self, right_value: T) {
         if !(self.left_value.to_f32() <= right_value.to_f32()) {
             self.panic_with_assertion(right_value, "<=");
@@ -99,12 +199,48 @@ impl<T: ToPrimitive + Debug> Expectation<T> {
 
 // implement_expectation_shared_methods! { AsRef<str> }
 impl<T: AsRef<str> + Debug> Expectation<T> {
+    /// Expect _result_ to end with _expectation_.
+    ///
+    /// This works for any type implementing `AsRef<str>`
+    /// (likely `String` & `&str`).
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use jrest::expect;
+    ///
+    /// expect!("abc").to_end_with("bc");
+    /// ```
+    ///
+    /// ```should_panic
+    /// use jrest::expect;
+    ///
+    /// expect!("abc").to_end_with("ab");
+    /// ```
     pub fn to_end_with<R: AsRef<str> + Debug>(&self, right_value: R) {
         if !self.left_value.as_ref().ends_with(right_value.as_ref()) {
             self.panic_with_assertion(right_value, "ends with");
         }
     }
 
+    /// Expect _result_ to start with _expectation_.
+    ///
+    /// This works for any type implementing `AsRef<str>`
+    /// (likely `String` & `&str`).
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use jrest::expect;
+    ///
+    /// expect!("abc").to_start_with("ab");
+    /// ```
+    ///
+    /// ```should_panic
+    /// use jrest::expect;
+    ///
+    /// expect!("abc").to_start_with("bc");
+    /// ```
     pub fn to_start_with<R: AsRef<str> + Debug>(&self, right_value: R) {
         if !self.left_value.as_ref().starts_with(right_value.as_ref()) {
             self.panic_with_assertion(right_value, "starts with");

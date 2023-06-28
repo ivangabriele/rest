@@ -1,5 +1,5 @@
 [package]
-name = "rest"
+name = "jrest"
 description = "The equivalent of Jest for Rust."
 license = "MIT"
 version = "0.0.0"

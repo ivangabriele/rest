@@ -1,4 +1,4 @@
-use rest::expect;
+use jrest::expect;
 
 #[test]
 fn to_be_greater_than_or_equal_passes() {

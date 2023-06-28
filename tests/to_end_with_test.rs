@@ -1,4 +1,4 @@
-use rest::expect;
+use jrest::expect;
 
 #[test]
 fn to_end_with_passes() {

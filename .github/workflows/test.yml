@@ -15,8 +15,10 @@ jobs:
           toolchain: 1.70.0
       - name: Install Tarpaulin
         run: cargo install cargo-tarpaulin
+      - name: Run documentation tests
+        run: cargo test --doc
       - name: Run tests (with coverage)
-        run: cargo tarpaulin --no-fail-fast --out Xml --skip-clean
+        run: make test-cover
       - name: Upload tests coverage
         uses: codecov/codecov-action@v3
         with:

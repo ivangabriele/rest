@@ -1,4 +1,4 @@
-use rest::expect;
+use jrest::expect;
 
 #[test]
 fn to_start_with_passes_on_success() {
