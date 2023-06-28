@@ -1,3 +1,6 @@
+doc:
+	cargo doc && firefox ./target/doc/jrest/index.html
+
 test:
 	cargo test --no-fail-fast
 test-cover:
