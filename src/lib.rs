@@ -18,7 +18,7 @@ use std::{fmt::Debug, panic::Location};
 //     Expectation::new(left_value)
 // }
 
-/// Wrap the result to be tested, giving you access to expectation matchers.
+/// Wrap the result to be tested, giving you access to [Expectation] matchers (methods).
 ///
 /// # Examples
 ///
@@ -44,6 +44,7 @@ pub struct Expectation<L: Debug> {
     left_value: L,
 }
 impl<L: Debug> Expectation<L> {
+    #[doc(hidden)]
     #[track_caller]
     pub fn new(left_value: L) -> Self {
         let at_path = Location::caller().file();
@@ -101,7 +102,8 @@ impl<L: Debug + Eq + PartialEq> Expectation<L> {
 impl<T: ToPrimitive + Debug> Expectation<T> {
     /// Expect _result_ to be greater than _expectation_.
     ///
-    /// This works for any type implementing [`ToPrimitive`](https://docs.rs/num/latest/num/trait.ToPrimitive.html).
+    /// This works with any type implementing [`num::ToPrimitive`]
+    /// (likely any kind of number: `f8`, `i16`, `u32`, `usize`, etc).
     ///
     /// # Examples
     ///
@@ -125,7 +127,8 @@ impl<T: ToPrimitive + Debug> Expectation<T> {
 
     /// Expect _result_ to be greater than or equal to _expectation_.
     ///
-    /// This works for any type implementing [`ToPrimitive`](https://docs.rs/num/latest/num/trait.ToPrimitive.html).
+    /// This works with any type implementing [`num::ToPrimitive`]
+    /// (likely any kind of number: `f8`, `i16`, `u32`, `usize`, etc).
     ///
     /// # Examples
     ///
@@ -149,7 +152,7 @@ impl<T: ToPrimitive + Debug> Expectation<T> {
 
     /// Expect _result_ to be less than _expectation_.
     ///
-    /// This works for any type implementing [`ToPrimitive`](https://docs.rs/num/latest/num/trait.ToPrimitive.html)
+    /// This works with any type implementing [`num::ToPrimitive`]
     /// (likely any kind of number: `f8`, `i16`, `u32`, `usize`, etc).
     ///
     /// # Examples
@@ -174,7 +177,8 @@ impl<T: ToPrimitive + Debug> Expectation<T> {
 
     /// Expect _result_ to be less than or equal to _expectation_.
     ///
-    /// This works for any type implementing [`ToPrimitive`](https://docs.rs/num/latest/num/trait.ToPrimitive.html).
+    /// This works with any type implementing [`num::ToPrimitive`]
+    /// (likely any kind of number: `f8`, `i16`, `u32`, `usize`, etc).
     ///
     /// # Examples
     ///
@@ -201,8 +205,8 @@ impl<T: ToPrimitive + Debug> Expectation<T> {
 impl<T: AsRef<str> + Debug> Expectation<T> {
     /// Expect _result_ to end with _expectation_.
     ///
-    /// This works for any type implementing `AsRef<str>`
-    /// (likely `String` & `&str`).
+    /// This works with any type implementing `AsRef<str>`
+    /// (likely [`String`] & [`str`]).
     ///
     /// # Examples
     ///
@@ -225,8 +229,8 @@ impl<T: AsRef<str> + Debug> Expectation<T> {
 
     /// Expect _result_ to start with _expectation_.
     ///
-    /// This works for any type implementing `AsRef<str>`
-    /// (likely `String` & `&str`).
+    /// This works with any type implementing `AsRef<str>`
+    /// (likely [`String`] & [`str`]).
     ///
     /// # Examples
     ///
