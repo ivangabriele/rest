@@ -1,14 +1,16 @@
-# Rest
+# Jrest
 
-[![Test Workflow Status](https://img.shields.io/github/actions/workflow/status/ivangabriele/rest/test.yml?label=Tests&style=for-the-badge)](https://github.com/ivangabriele/rest/actions?query=branch%3Amain+workflow%3ATest++)
-[![Code Coverage](https://img.shields.io/codecov/c/github/ivangabriele/rest/main?style=for-the-badge)](https://app.codecov.io/github/ivangabriele/rest)
+[![Test Workflow Status](https://img.shields.io/github/actions/workflow/status/ivangabriele/jrest/test.yml?label=Tests&style=for-the-badge)](https://github.com/ivangabriele/jrest/actions?query=branch%3Amain+workflow%3ATest++)
+[![Code Coverage](https://img.shields.io/codecov/c/github/ivangabriele/jrest/main?style=for-the-badge)](https://app.codecov.io/github/ivangabriele/jrest)
 
 The equivalent of [Jest](https://jestjs.io) for Rust.
 
-Rest is a testing framework for Rust, inspired by [Jest](https://jestjs.io),
-easy to write and easy to read, with diffs when tests fail.
+**Jrest** is a testing framework project for Rust, inspired by [Jest](https://jestjs.io),
+easy to write and easy to read, with fancy diffs when tests fail.
 
-> ⚠️ This is a work in progress.
+> ⚠️ Be aware that this is a work in progress.
+ 
+But it should get regular updates since I'm using it every week on my own open-source projects.
 
 ---
 
@@ -30,19 +32,19 @@ easy to write and easy to read, with diffs when tests fail.
 ## Installation
 
 ```sh
-cargo add --dev --git https://github.com/ivangabriele/rest
+cargo add --dev jrest
 ```
 
 > **Note**<br>
 > [https://crates.io/crates/rest](https://crates.io/crates/rest) is unfortunately squatted by a ghost.<br>
-> That's why you need to add this GitHub repository instead.
+> That's why I had to name it **Jrest** instead of **Rest**.
 
 ## Usage
 
 ### `.to_be()`
 
 ```rust
-use rest::expect;
+use jrest::expect;
 
 #[test]
 fn test_something() {
@@ -56,7 +58,7 @@ fn test_something() {
 #### `.to_be_greater_than()`
 
 ```rust
-use rest::expect;
+use jrest::expect;
 
 #[test]
 fn test_something() {
@@ -67,7 +69,7 @@ fn test_something() {
 #### `.to_be_greater_than_or_equal()`
 
 ```rust
-use rest::expect;
+use jrest::expect;
 
 #[test]
 fn test_something() {
@@ -79,7 +81,7 @@ fn test_something() {
 #### `.to_be_less_than()`
 
 ```rust
-use rest::expect;
+use jrest::expect;
 
 #[test]
 fn test_something() {
@@ -90,7 +92,7 @@ fn test_something() {
 #### `.to_be_less_than_or_equal()`
 
 ```rust
-use rest::expect;
+use jrest::expect;
 
 #[test]
 fn test_something() {
@@ -104,7 +106,7 @@ fn test_something() {
 #### `.to_start_with()`
 
 ```rust
-use rest::expect;
+use jrest::expect;
 
 #[test]
 fn test_something() {
@@ -115,7 +117,7 @@ fn test_something() {
 #### `.to_start_with()`
 
 ```rust
-use rest::expect;
+use jrest::expect;
 
 #[test]
 fn test_something() {
