@@ -46,12 +46,15 @@ cargo add --dev jrest
 ### `.to_be()`
 
 ```rust
-use jrest::expect;
+#[cfg(test)]
+mod tests {
+  use jrest::expect;
 
-#[test]
-fn test_something() {
-    expect!("A &str").to_be("A &str");
-    expect!("A String".to_string()).to_be("A String".to_string());
+  #[test]
+  fn test_something() {
+      expect!("A &str").to_be("A &str");
+      expect!("A String".to_string()).to_be("A String".to_string());
+  }
 }
 ```
 
@@ -60,46 +63,58 @@ fn test_something() {
 #### `.to_be_greater_than()`
 
 ```rust
-use jrest::expect;
+#[cfg(test)]
+  mod tests {
+  use jrest::expect;
 
-#[test]
-fn test_something() {
-    expect!(3).to_be_greater_than(2);
+  #[test]
+  fn test_something() {
+      expect!(3).to_be_greater_than(2);
+  }
 }
 ```
 
 #### `.to_be_greater_than_or_equal()`
 
 ```rust
-use jrest::expect;
+#[cfg(test)]
+mod tests {
+  use jrest::expect;
 
-#[test]
-fn test_something() {
-    expect!(3).to_be_greater_than_or_equal(2);
-    expect!(3).to_be_greater_than_or_equal(3);
+  #[test]
+  fn test_something() {
+      expect!(3).to_be_greater_than_or_equal(2);
+      expect!(3).to_be_greater_than_or_equal(3);
+  }
 }
 ```
 
 #### `.to_be_less_than()`
 
 ```rust
-use jrest::expect;
+#[cfg(test)]
+mod tests {
+  use jrest::expect;
 
-#[test]
-fn test_something() {
-    expect!(2).to_be_less_than(3);
+  #[test]
+  fn test_something() {
+      expect!(2).to_be_less_than(3);
+  }
 }
 ```
 
 #### `.to_be_less_than_or_equal()`
 
 ```rust
-use jrest::expect;
+#[cfg(test)]
+mod tests {
+  use jrest::expect;
 
-#[test]
-fn test_something() {
-    expect!(2).to_be_less_than_or_equal(3);
-    expect!(2).to_be_less_than_or_equal(2);
+  #[test]
+  fn test_something() {
+      expect!(2).to_be_less_than_or_equal(3);
+      expect!(2).to_be_less_than_or_equal(2);
+  }
 }
 ```
 
@@ -108,22 +123,28 @@ fn test_something() {
 #### `.to_start_with()`
 
 ```rust
-use jrest::expect;
+#[cfg(test)]
+mod tests {
+  use jrest::expect;
 
-#[test]
-fn test_something() {
-    expect!("cargo").to_end_with("go");
+  #[test]
+  fn test_something() {
+      expect!("cargo").to_end_with("go");
+  }
 }
 ```
 
 #### `.to_start_with()`
 
 ```rust
-use jrest::expect;
+#[cfg(test)]
+mod tests {
+  use jrest::expect;
 
-#[test]
-fn test_something() {
-    expect!("cargo").to_start_with("car");
+  #[test]
+  fn test_something() {
+      expect!("cargo").to_start_with("car");
+  }
 }
 ```
 
