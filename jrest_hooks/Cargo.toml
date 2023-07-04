@@ -7,7 +7,7 @@ version = "0.1.2"
 edition = "2021"
 rust-version = "1.70.0"
 
-authors = ["Ivan Gabriele <ivan.gabriele@gmail.com>"]
+authors = ["Ivan Gabriele <ivan.gabriele@gmail.com>", "Tom Pridham <pridham.tom@gmail.com>"]
 categories = ["development-tools::testing"]
 homepage = "https://github.com/ivangabriele/jrest#readme"
 readme = "README.md"
