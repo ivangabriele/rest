@@ -28,6 +28,7 @@ But it should get regular updates since I'm using it every week on my own open-s
     - [`.to_start_with()`](#to_start_with)
     - [`.to_start_with()`](#to_start_with-1)
 - [Roadmap](#roadmap)
+- [Thanks](#thanks)
 
 ---
 
@@ -155,3 +156,8 @@ mod tests {
 - [ ] `.toMatch()`
 - [ ] `.toMatchObject()`
 - [ ] `.toThrow()`
+
+## Thanks
+
+- [Tom Pridham](https://github.com/TomPridham)
+  for [test-env-helpers](https://github.com/TomPridham/test-env-helpers) inspiration.

@@ -1,0 +1,25 @@
+[package]
+name = "jrest_hooks"
+description = "Jrest hooks: after_all, after_each, before_all, berfore_each, skip."
+license = "MIT"
+version = "0.1.2"
+
+edition = "2021"
+rust-version = "1.70.0"
+
+authors = ["Ivan Gabriele <ivan.gabriele@gmail.com>"]
+categories = ["development-tools::testing"]
+homepage = "https://github.com/ivangabriele/jrest#readme"
+readme = "README.md"
+repository = "https://github.com/ivangabriele/jrest"
+
+include = ["src/**/*.rs", "CHANGELOG.md", "LICENSE", "README.md"]
+
+[lib]
+proc-macro = true
+
+[dependencies]
+quote = "1.0.29"
+syn = { version = "2.0.23", features = ["extra-traits", "fold", "full"] }
+
+[dev-dependencies]

@@ -1,0 +1,24 @@
+[package]
+name = "jrest"
+description = "The equivalent of Jest for Rust."
+license = "MIT"
+version = "0.1.2"
+
+edition = "2021"
+rust-version = "1.70.0"
+
+authors = ["Ivan Gabriele <ivan.gabriele@gmail.com>"]
+categories = ["development-tools::testing"]
+homepage = "https://github.com/ivangabriele/jrest#readme"
+readme = "README.md"
+repository = "https://github.com/ivangabriele/jrest"
+
+include = ["src/**/*.rs", "CHANGELOG.md", "LICENSE", "README.md"]
+
+[dependencies]
+num = "0.4.0"
+quote = "1.0.29"
+syn = { version = "2.0.23", features = ["extra-traits", "fold", "full"] }
+jrest_hooks = { version = "=0.1.2", optional = true, path = "../jrest_hooks" }
+
+[dev-dependencies]
