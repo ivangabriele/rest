@@ -1,6 +1,8 @@
 use num::ToPrimitive;
 use std::{fmt::Debug, panic::Location};
 
+mod macros;
+
 // macro_rules! implement_expectation_shared_methods {
 //     ($trait_fragment:tt$(<$type_fragment:tt>)?) => {
 //         impl<T: $trait_fragment$(<$type_fragment>)? + Debug> Expectation<T> {

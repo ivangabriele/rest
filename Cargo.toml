@@ -13,7 +13,7 @@ homepage = "https://github.com/ivangabriele/jrest"
 readme = "README.md"
 repository = "https://github.com/ivangabriele/jrest"
 
-include = ["src/lib.rs", "LICENSE", "README.md"]
+include = ["src/**/*.rs", "LICENSE", "README.md"]
 
 [dependencies]
 num = "0.4.0"
