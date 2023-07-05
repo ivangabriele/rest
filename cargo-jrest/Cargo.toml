@@ -1,13 +1,13 @@
 [package]
-name = "jrest_hooks"
-description = "Jrest `after()`, `after_each()`, `before()`, `before_each()` and `skip()` hooks."
+name = "cargo-jrest"
+description = "Jrest Cargo command."
 license = "MIT"
 version = "0.1.2"
 
 edition = "2021"
 rust-version = "1.70.0"
 
-authors = ["Ivan Gabriele <ivan.gabriele@gmail.com>", "Tom Pridham <pridham.tom@gmail.com>"]
+authors = ["Ivan Gabriele <ivan.gabriele@gmail.com>"]
 categories = ["development-tools::testing"]
 homepage = "https://github.com/ivangabriele/jrest#readme"
 readme = "README.md"
@@ -15,11 +15,9 @@ repository = "https://github.com/ivangabriele/jrest"
 
 include = ["src/**/*.rs", "CHANGELOG.md", "LICENSE", "README.md"]
 
-[lib]
-proc-macro = true
-
 [dependencies]
-quote = "1.0.29"
-syn = { version = "2.0.23", features = ["extra-traits", "fold", "full"] }
+clap = { version = "4.3.10", features = ["derive"] }
+tokio = { version = "1.29.1", features = ["process", "full"] }
+serde_json = "1.0.100"
 
 [dev-dependencies]

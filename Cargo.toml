@@ -1,2 +1,2 @@
 [workspace]
-members = ["jrest", "jrest_hooks"]
+members = ["cargo-jrest", "jrest", "jrest_hooks"]
