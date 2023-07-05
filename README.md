@@ -38,10 +38,6 @@ But it should get regular updates since I'm using it every week on my own open-s
 cargo add --dev jrest
 ```
 
-> **Note**<br>
-> [https://crates.io/crates/rest](https://crates.io/crates/rest) is unfortunately squatted by a ghost.<br>
-> That's why I had to name it **Jrest** instead of **Rest**.
-
 ## Usage
 
 ### `.to_be()`
