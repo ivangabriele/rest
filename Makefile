@@ -2,9 +2,9 @@ doc:
 	cargo doc && firefox ./target/doc/jrest/index.html
 
 publish:
-	cd ./jrest_hooks && cargo publish
-	cd ./jrest && cargo publish
-	cd ./cargo-jrest && cargo publish
+	cd ./jrest_hooks && cargo doc && cargo publish
+	cd ./jrest && cargo doc && cargo publish
+	cd ./cargo-jrest && cargo doc && cargo publish
 
 test:
 	cargo test --no-fail-fast

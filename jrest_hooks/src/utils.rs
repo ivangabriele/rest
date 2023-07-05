@@ -1,4 +1,4 @@
-//! This code is currently an exact copy of https://github.com/TomPridham/test-env-helpers source code.
+//! This code is currently an exact copy of <https://github.com/TomPridham/test-env-helpers> source code.
 
 use std::collections::VecDeque;
 use syn::UseTree;

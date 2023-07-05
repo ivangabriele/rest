@@ -1,4 +1,4 @@
-//! This code is currently an (almost) exact copy of https://github.com/TomPridham/test-env-helpers source code.
+//! This code is currently an (almost) exact copy of <https://github.com/TomPridham/test-env-helpers> source code.
 //!
 //! ## Getting Started
 //! Using these macros is fairly simple. The four after/before functions all require a function
