@@ -2,7 +2,7 @@
 name = "jrest"
 description = "The equivalent of Jest for Rust."
 license = "MIT"
-version = "0.2.1"
+version = "0.2.2"
 
 edition = "2021"
 rust-version = "1.70.0"
@@ -17,6 +17,6 @@ include = ["src/**/*.rs", "CHANGELOG.md", "LICENSE", "README.md"]
 
 [dependencies]
 num = "0.4.0"
-jrest_hooks = { version = "=0.2.1", optional = true, path = "../jrest_hooks" }
+jrest_hooks = { version = "=0.2.2", optional = true, path = "../jrest_hooks" }
 
 [dev-dependencies]

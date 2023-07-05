@@ -2,7 +2,7 @@
 name = "jrest_hooks"
 description = "Jrest `after()`, `after_each()`, `before()`, `before_each()` and `skip()` hooks."
 license = "MIT"
-version = "0.2.1"
+version = "0.2.2"
 
 edition = "2021"
 rust-version = "1.70.0"
