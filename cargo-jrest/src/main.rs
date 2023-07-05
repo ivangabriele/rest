@@ -1,3 +1,4 @@
+use std::env;
 use std::process::Stdio;
 
 use clap::Parser;
@@ -13,21 +14,23 @@ struct Cli {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    clear_terminal();
+    let args: Vec<String> = env::args().collect();
+    let filtered_args = if is_run_as_cargo_command() {
+        args.iter().skip(1).cloned().collect::<Vec<String>>()
+    } else {
+        args.iter().cloned().collect::<Vec<String>>()
+    };
 
-    let cli = Cli::parse();
+    let cli = Cli::parse_from(filtered_args);
 
     let controlled_testname = cli.testname.as_deref().unwrap_or(".").to_owned();
     let statement = format!("cargo test {}", controlled_testname);
 
+    clear_terminal();
+
     println!("\n[Jrest] Running `{}`...\n", statement);
 
     let mut tokio_command = Command::new("cargo");
-    // Command::new("cargo").args(["test", "--message-format=json", controlled_testname]);
-    // .spawn()
-    // .expect(format!("Failed to run `cargo test {}`.", controlled_testname).as_str())
-    // .wait()
-    // .expect("Failed to wait for `cargo test` to finish.");
 
     tokio_command.args([
         "test",
@@ -75,4 +78,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 fn clear_terminal() {
     print!("{esc}[2J{esc}[1;1H", esc = 27 as char);
+}
+
+fn is_run_as_cargo_command() -> bool {
+    let args: Vec<String> = std::env::args().collect();
+
+    args.len() >= 2 && args[1] == "jrest"
 }
