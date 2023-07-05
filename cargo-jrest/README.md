@@ -1,8 +1,8 @@
 # Cargo Jrest
 
-[![Crates.io Package](https://img.shields.io/crates/v/jrest?style=for-the-badge)](https://crates.io/crates/jrest)
-[![Test Workflow Status](https://img.shields.io/github/actions/workflow/status/ivangabriele/jrest/test.yml?label=Tests&style=for-the-badge)](https://github.com/ivangabriele/jrest/actions?query=branch%3Amain+workflow%3ATest++)
-[![Code Coverage](https://img.shields.io/codecov/c/github/ivangabriele/jrest/main?style=for-the-badge)](https://app.codecov.io/github/ivangabriele/jrest)
+[![Crates.io Package](https://img.shields.io/crates/v/cargo-jrest?style=for-the-badge)](https://crates.io/crates/cargo-jrest)
+[![Test Workflow Status](https://img.shields.io/github/actions/workflow/status/ivangabriele/jrest/test.yml?label=CI&style=for-the-badge)](https://github.com/ivangabriele/jrest/actions?query=branch%3Amain+workflow%3ATest++)
+[![Code Coverage](https://img.shields.io/codecov/c/github/ivangabriele/jrest/main?label=Cov&style=for-the-badge)](https://app.codecov.io/github/ivangabriele/jrest)
 
 **Jrest** Cargo command.
 
